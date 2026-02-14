@@ -8,7 +8,7 @@ export default function ProductCard({ product }) {
           className="w-full h-full object-contain rounded-md"
         />
       </div>
-      <h3 className="text-sm font-semibold line-clamp-2 h-10 mb-2">
+      <h3 className="text-base font-semibold line-clamp-2 h-auto mb-2">
         {product.name}
       </h3>
 
@@ -18,14 +18,14 @@ export default function ProductCard({ product }) {
           src={`/images/ratings/rating-${product.rating.stars * 10}.png`}
           alt={`${product.rating.stars} stars`}
         />
-        <div className="text-blue-500 text-sm hover:text-blue-400 transition-colors cursor-pointer">
+        <div className="text-blue-500 text-base hover:text-blue-400 transition-colors cursor-pointer">
           {product.rating.count}
         </div>
       </div>
 
       <div className="mt-auto">
         <div className="mb-4 mt-2">
-          <select className="bg-neutral-100 border border-neutral-300 rounded-md p-1 text-sm focus:outline-none focus:ring-1 focus:ring-yellow-500">
+          <select className="bg-neutral-100 border border-neutral-300 rounded-md p-1 text-sm focus:outline-none focus:ring-1 focus:ring-yellow-500 cursor-pointer">
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
               <option key={num} value={num}>
                 {num}
@@ -36,7 +36,7 @@ export default function ProductCard({ product }) {
         <p className="font-semibold text-base mb-2">
           ${(product.priceCents / 100).toFixed(2)}
         </p>
-        <button className="w-full bg-yellow-400 py-3 rounded-lg text-sm font-medium hover:bg-yellow-500 transition-colors">
+        <button className="w-full bg-blue-500 py-3 rounded-lg text-sm text-neutral-100 font-medium hover:bg-blue-600 transition-colors">
           Add to Cart
         </button>
       </div>

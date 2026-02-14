@@ -12,7 +12,11 @@ export default function Header({ cartQuantity }) {
             <Menu className="h-6 w-6" />
           </Button>
           <Link to="/" className="flex items-center cursor-pointer">
-            <img src={logo} className="h-[50px] w-auto object-contain " />
+            <img
+              src={logo}
+              alt="Logo of the Bussiness"
+              className="h-[50px] w-auto object-contain "
+            />
             <span className="text-xl font-bold tracking-tight text-neutral-900 relative w-fit after:block after:content-[''] after:absolute after:bottom-[1px] after:h-[2px] after:bg-blue-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left ">
               MhY
             </span>
