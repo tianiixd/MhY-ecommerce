@@ -3,7 +3,13 @@ import { ShoppingCart, Search, Menu } from "lucide-react";
 import { Button } from "./ui/button";
 import logo from "../assets/cartLogo.png";
 
-export default function Header({ cartQuantity }) {
+export default function Header({ cart }) {
+  let totalQuantity = 0;
+
+  cart.forEach((cartItem) => {
+    totalQuantity += cartItem.quantity;
+  });
+
   return (
     <header className="sticky top-0 z-50 w-full bg-slate-100 shadow-md">
       <div className="flex h-16 w-full justify-between items-center p-4 md:p-6 gap-4">
@@ -60,7 +66,7 @@ export default function Header({ cartQuantity }) {
               <span className="relative">
                 <ShoppingCart className="h-5 w-5"></ShoppingCart>
                 <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-[10px] font-bold text-neutral-100">
-                  {cartQuantity ? cartQuantity : "2"}
+                  {totalQuantity ?? 0}
                 </span>
               </span>
               <span className="hidden md:block">Cart</span>

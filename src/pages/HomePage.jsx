@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 
 export default function HomePage() {
   const [products, setProducts] = useState([]);
-
+  const [cart, setCart] = useState([]);
   useEffect(() => {
     async function getProductData() {
       const res = await axios.get("http://localhost:3000/api/products");
@@ -14,7 +14,16 @@ export default function HomePage() {
       setProducts(data);
       console.log(data);
     }
+
+    async function getCartData() {
+      const res = await axios.get("http://localhost:3000/api/cart-items");
+      const data = res.data;
+      setCart(data);
+      console.log(data);
+    }
+
     getProductData();
+    getCartData();
   }, []);
 
   return (
@@ -28,7 +37,7 @@ export default function HomePage() {
       />
 
       <div className="flex flex-col min-h-dvh w-full bg-neutral-100">
-        <Header />
+        <Header cart={cart} />
         <main className="flex-grow w-full max-w-full mx-auto p-4 md:p-6">
           <ProductGrid products={products} />
         </main>
