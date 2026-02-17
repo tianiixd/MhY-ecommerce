@@ -19,7 +19,7 @@ function App() {
 
   return (
     <Routes>
-      <Route index element={<HomePage products={products} />} />
+      <Route index element={<HomePage />} />
       <Route
         path="/orders"
         element={<OrdersPage cartItems={cartItems} totalPrice={totalPrice} />}

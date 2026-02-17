@@ -1,8 +1,22 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import ProductGrid from "../components/ProductGrid";
 import Footer from "@/components/Footer";
 
-export default function HomePage({ products }) {
+export default function HomePage() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function getProductData() {
+      const res = await axios.get("http://localhost:3000/api/products");
+      const data = res.data;
+      setProducts(data);
+      console.log(data);
+    }
+    getProductData();
+  }, []);
+
   return (
     <>
       <title>Home</title>
