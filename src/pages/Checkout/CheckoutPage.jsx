@@ -1,23 +1,20 @@
 import CheckoutHeader from "./CheckoutHeader";
-import { products } from "../../data/products";
+import Footer from "@/components/Footer";
 
-export default function CheckoutPage() {
-  const cartItems = [
-    products[0],
-    products[1],
-    products[2],
-    products[3],
-    products[4],
-    products[5],
-  ];
+export default function CheckoutPage({ cartItems }) {
   return (
     <>
       <title>Checkout</title>
-
-      <div className="min-h-screen w-full bg-neutral-100 ">
+      <link
+        rel="icon"
+        href="/images/cart-favicon.png"
+        type="image/png"
+        sizes="32x32"
+      />
+      <div className="flex flex-col min-h-dvh w-full bg-neutral-100 ">
         <CheckoutHeader itemsCount={cartItems.length} />
-        <main className="max-w-6xl mx-auto p-4 md:p-6">
-          <h1 className="text-2xl font-bold mb-4">Review your order</h1>
+        <main className="flex-grow w-full max-w-6xl mx-auto p-4 md:p-6">
+          <h1 className="text-2xl font-semibold mb-3">Review your order</h1>
 
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_350px] gap-6">
             <div className="space-y-4">
@@ -26,7 +23,7 @@ export default function CheckoutPage() {
                   key={product.id}
                   className="bg-white border border-gray-300 rounded-lg p-6"
                 >
-                  <h3 className="text-black font-bold text-lg mb-4">
+                  <h3 className="text-black font-semibold text-lg mb-4">
                     Delivery date: Tuesday, June 21
                   </h3>
 
@@ -35,21 +32,29 @@ export default function CheckoutPage() {
                       <img
                         src={product.image}
                         alt={product.name}
-                        className="w-24 h-24 object-contain"
+                        className="w-24 h-24 object-contain rounded-md"
                       />
-                      <div>
-                        <h4 className="font-bold mb-1">{product.name}</h4>
-                        <p className="text-green-700 font-bold mb-2">
-                          ${(product.priceCents / 100).toFixed(2)}
-                        </p>
-                        <div className="text-sm">
-                          <span>Quantity: 1</span>
-                          <button className="text-blue-600 hover:underline ml-2">
-                            Update
-                          </button>
-                          <button className="text-blue-600 hover:underline ml-2">
-                            Delete
-                          </button>
+
+                      <div className="flex flex-col justify-between">
+                        <div>
+                          <h4 className="font-bold mb-1 line-clamp-2">
+                            {product.name}
+                          </h4>
+                          <p className="text-green-700 font-bold">
+                            ${(product.priceCents / 100).toFixed(2)}
+                          </p>
+                        </div>
+
+                        <div className="flex items-center gap-3 mt-2">
+                          <span className="text-sm text-gray-600">Qty: 1</span>
+                          <div className="flex gap-2">
+                            <button className="px-3 py-2 text-sm text-neutral-100 rounded-md bg-blue-600 hover:bg-blue-700 transition-colors">
+                              Update
+                            </button>
+                            <button className="px-3 py-2 text-sm text-neutral-100 rounded-md bg-red-600 hover:bg-red-700 transition-colors">
+                              Delete
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -137,6 +142,7 @@ export default function CheckoutPage() {
             </div>
           </div>
         </main>
+        <Footer />
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { NavLink, Link } from "react-router";
 import { ShoppingCart, Search, Menu } from "lucide-react";
 import { Button } from "./ui/button";
 import logo from "../assets/cartLogo.png";
@@ -38,15 +38,22 @@ export default function Header({ cartQuantity }) {
 
         <ul className="flex pr-8 items-center gap-5 text-sm font-medium text-neutral-700">
           <li>
-            <Link
+            <NavLink
               to="/orders"
-              className="hidden md:flex items-center relative w-fit after:block after:content-[''] after:absolute after:bottom-[-4px] after:h-[2px] after:bg-blue-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left"
+              className={({ isActive }) =>
+                `hidden md:flex items-center relative w-fit transition-colors after:block after:content-[''] after:absolute after:bottom-[-4px] after:h-[2px] after:bg-blue-600 after:w-full after:transition-transform after:duration-300 after:origin-left
+                ${
+                  isActive
+                    ? "text-neutral-900 after:scale-x-100 font-bold"
+                    : "text-neutral-600 hover:text-neutral-900 after:scale-x-0 hover:after:scale-x-100"
+                }`
+              }
             >
               Orders
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
+            <NavLink
               to="/checkout"
               className="flex items-center gap-2 relative w-fit after:block after:content-[''] after:absolute after:bottom-[-4px] after:h-[2px] after:bg-blue-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left"
             >
@@ -57,7 +64,7 @@ export default function Header({ cartQuantity }) {
                 </span>
               </span>
               <span className="hidden md:block">Cart</span>
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>
