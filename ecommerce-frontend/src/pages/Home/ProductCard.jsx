@@ -99,6 +99,7 @@ export default function ProductCard({ product, loadCart }) {
         </div>
 
         <button
+          data-testid="add-to-cart-button"
           onClick={addToCart}
           disabled={isAdding}
           className="w-full bg-blue-500 py-3 rounded-lg text-neutral-100 font-medium hover:bg-blue-600 transition-colors disabled:bg-blue-300 disabled:cursor-not-allowed"
