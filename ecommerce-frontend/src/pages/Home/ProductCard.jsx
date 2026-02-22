@@ -69,6 +69,7 @@ export default function ProductCard({ product, loadCart }) {
 
       <div className="flex items-center">
         <img
+          data-testid="product-rating-stars-image"
           className="w-20 mr-2"
           src={`/images/ratings/rating-${product.rating.stars * 10}.png`}
           alt={`${product.rating.stars} stars`}

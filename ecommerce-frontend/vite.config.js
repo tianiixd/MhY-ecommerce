@@ -1,7 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import path from "path";
-import process from "node:process";
+import { fileURLToPath, URL } from "node:url";
 
 export default defineConfig({
   plugins: [react()],
@@ -20,9 +19,12 @@ export default defineConfig({
     port: 5173,
   },
   resolve: {
-    alias: {
-      "@": path.resolve(process.cwd(), "./src"),
-    },
+    alias: [
+      {
+        find: "@",
+        replacement: fileURLToPath(new URL("./src", import.meta.url)),
+      },
+    ],
   },
   test: {
     environment: "jsdom",

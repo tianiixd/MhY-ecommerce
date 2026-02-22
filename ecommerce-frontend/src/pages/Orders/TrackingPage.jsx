@@ -100,7 +100,7 @@ export default function TrackingPage({ cart = [] }) {
             <h1 className="text-2xl md:text-3xl font-bold text-black mb-2">
               {isDelivered ? "Delivered on " : "Arriving on "}
               {dayjs(orderProduct.estimatedDeliveryTimeMs).format(
-                "dddd, MMMM D",
+                "dddd, MMMM D, YYYY",
               )}
             </h1>
 

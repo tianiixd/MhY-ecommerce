@@ -2,6 +2,12 @@ import { it, expect, describe, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import ProductCard from "./ProductCard";
 
+vi.mock("@/hooks/use-toast", () => ({
+  useToast: () => ({
+    toast: vi.fn(),
+  }),
+}));
+
 describe("ProductCard Component", () => {
   it("Displays the product details correctly", () => {
     const product = {
@@ -24,6 +30,16 @@ describe("ProductCard Component", () => {
     ).toBeInTheDocument();
     expect(screen.getByText("$10.90")).toBeInTheDocument();
 
-    expect(screen.getByTestId("product-image"));
+    expect(screen.getByTestId("product-image")).toHaveAttribute(
+      "src",
+      "/images/products/athletic-cotton-socks-6-pairs.jpg",
+    );
+
+    expect(screen.getByTestId("product-rating-stars-image")).toHaveAttribute(
+      "src",
+      "/images/ratings/rating-45.png",
+    );
+
+    expect(screen.getByText("87")).toBeInTheDocument();
   });
 });
