@@ -18,25 +18,40 @@ export function PaymentSummary({ paymentSummary, loadCart }) {
       {paymentSummary && (
         <>
           <div className="space-y-2 text-sm text-gray-600 mb-4 border-b border-gray-300 pb-4">
-            <div className="flex justify-between">
+            <div
+              data-testid="payment-summary-product-cost"
+              className="flex justify-between"
+            >
               <span>Items ({paymentSummary.totalItems}):</span>
               <span>{formatMoney(paymentSummary.productCostCents)}</span>
             </div>
-            <div className="flex justify-between">
+            <div
+              data-testid="payment-summary-shipping-cost"
+              className="flex justify-between"
+            >
               <span>Shipping & handling:</span>
               <span>{formatMoney(paymentSummary.shippingCostCents)}</span>
             </div>
-            <div className="flex justify-between mt-2 pt-2 border-t border-gray-300">
+            <div
+              data-testid="payment-summary-total-before-tax"
+              className="flex justify-between mt-2 pt-2 border-t border-gray-300"
+            >
               <span>Total before tax:</span>
               <span>{formatMoney(paymentSummary.totalCostBeforeTaxCents)}</span>
             </div>
-            <div className="flex justify-between">
+            <div
+              data-testid="payment-summary-tax"
+              className="flex justify-between"
+            >
               <span>Estimated tax (10%):</span>
               <span>{formatMoney(paymentSummary.taxCents)}</span>
             </div>
           </div>
 
-          <div className="flex justify-between text-xl font-bold mb-6">
+          <div
+            data-testid="payment-summary-total"
+            className="flex justify-between text-xl font-bold mb-6"
+          >
             <span>Order total:</span>
             <span className="text-green-700">
               {formatMoney(paymentSummary.totalCostCents)}
@@ -44,6 +59,7 @@ export function PaymentSummary({ paymentSummary, loadCart }) {
           </div>
 
           <button
+            data-testid="place-order-button"
             className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 rounded-lg transition-colors shadow-sm"
             onClick={createOrder}
           >

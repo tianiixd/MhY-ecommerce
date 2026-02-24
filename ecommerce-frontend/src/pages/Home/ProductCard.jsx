@@ -54,7 +54,10 @@ export default function ProductCard({ product, loadCart }) {
   };
 
   return (
-    <div className="flex flex-col border border-gray-300 p-4 rounded-lg bg-white shadow-sm hover:translate-y-[-10px] transition-all">
+    <div
+      className="flex flex-col border border-gray-300 p-4 rounded-lg bg-white shadow-sm hover:translate-y-[-10px] transition-all"
+      data-testid="product-card"
+    >
       <div className="aspect-square w-full overflow-hidden mb-3">
         <img
           data-testid="product-image"
@@ -85,6 +88,7 @@ export default function ProductCard({ product, loadCart }) {
             {formatMoney(product.priceCents)}
           </p>
           <select
+            data-testid="product-quantity-selector"
             onChange={selectQuantity}
             value={quantity}
             disabled={isAdding}
